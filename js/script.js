@@ -417,15 +417,13 @@ const displayBackgroundImage = (type, backgroundPath) => {
     }
 };
 
-// Fetch data from TMDb API
+// Fetch data from TMDb API Proxy
 const fetchAPIData = async (endpoint) => {
     showSpinner();
 
     const url = `${global.TMDB_PROXY_URL}?path=${encodeURIComponent(
-        `search/${global.search.type}`
-    )}&language=en-US&query=${encodeURIComponent(global.search.term)}&page=${
-        global.search.page
-    }`;
+        endpoint
+    )}&language=en-US`;
 
     const response = await fetch(url);
     const data = await response.json();
@@ -437,15 +435,15 @@ const fetchAPIData = async (endpoint) => {
 
 // Search Request from TMDb API
 const searchAPIData = async (endpoint) => {
-    const TMDB_API_KEY = global.tmdb.key;
-    const TMDB_API_URL = global.tmdb.url;
-
     showSpinner();
 
-    const response = await fetch(
-        `${TMDB_API_URL}search/${global.search.type}?api_key=${TMDB_API_KEY}&language=en-US&query=${global.search.term}&page=${global.search.page}`
-    );
+    const url = `${global.TMDB_PROXY_URL}?path=${encodeURIComponent(
+        `search/${global.search.type}`
+    )}&language=en-US&query=${encodeURIComponent(global.search.term)}&page=${
+        global.search.page
+    }`;
 
+    const response = await fetch(url);
     const data = await response.json();
 
     hideSpinner();
