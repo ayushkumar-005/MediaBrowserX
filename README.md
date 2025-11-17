@@ -13,7 +13,7 @@ All TMDB requests are routed through a **Vercel serverless function** so it work
 
 ## Demo
 
-Deployed on Vercel: https://media-browser-x.vercel.app/
+**Deployed on Vercel**: https://media-browser-x.vercel.app/
 
 ## Tech Stack
 
