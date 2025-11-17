@@ -7,10 +7,7 @@ const global = {
         totalPages: 1,
         totalResults: 0,
     },
-    tmdb: {
-        key: "64efd326a62f97fb3ef21e0abef71d4d",
-        url: "https://api.themoviedb.org/3/",
-    },
+    TMDB_PROXY_URL: "/api/tmdb",
 };
 
 // Display Slider Movies
@@ -193,7 +190,7 @@ const displaySearchResults = (results) => {
             ${
                 result.poster_path
                     ? `<img
-              src="https://images.tmdb.org/t/p/w500/${result.poster_path}"
+              src="https://image.tmdb.org/t/p/w500/${result.poster_path}"
               class="card-img-top"
               alt="${
                   global.search.type === "movie" ? result.title : result.name
@@ -283,7 +280,7 @@ const displayMovieDetails = async () => {
             ${
                 movie.poster_path
                     ? `<img
-              src="https://images.tmdb.org/t/p/w500${movie.poster_path}"
+              src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
               class="card-img-top"
               alt="${movie.title}"/>`
                     : `<img
@@ -350,7 +347,7 @@ const displayShowDetails = async () => {
             ${
                 show.poster_path
                     ? `<img
-              src="https://images.tmdb.org/t/p/w500${show.poster_path}"
+              src="https://image.tmdb.org/t/p/w500${show.poster_path}"
               class="card-img-top"
               alt="${show.name}"/>`
                     : `<img
@@ -422,15 +419,15 @@ const displayBackgroundImage = (type, backgroundPath) => {
 
 // Fetch data from TMDb API
 const fetchAPIData = async (endpoint) => {
-    const TMDB_API_KEY = global.tmdb.key;
-    const TMDB_API_URL = global.tmdb.url;
-
     showSpinner();
 
-    const response = await fetch(
-        `${TMDB_API_URL}${endpoint}?api_key=${TMDB_API_KEY}&language=en-US`
-    );
+    const url = `${global.TMDB_PROXY_URL}?path=${encodeURIComponent(
+        `search/${global.search.type}`
+    )}&language=en-US&query=${encodeURIComponent(global.search.term)}&page=${
+        global.search.page
+    }`;
 
+    const response = await fetch(url);
     const data = await response.json();
 
     hideSpinner();
