@@ -2,10 +2,10 @@
 
 A simple movie and TV show browser built with **vanilla JavaScript** and the **TMDB API**, deployed on **Vercel**.
 
-The app lets you:
+This app lets you:
 
 -   Browse popular movies and TV shows
--   See “Now Playing” movies and “Airing Today” shows in a hero slider
+-   See what's “Now Playing” in movies & shows in a hero slider
 -   Search for movies/TV shows with pagination
 -   View detailed info pages with backdrop, genres, stats, and production companies
 
