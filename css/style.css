@@ -99,6 +99,9 @@ ul {
 
 .main-header ul {
     display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-header ul li {
@@ -132,6 +135,14 @@ ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-gap: 20px;
+    }
 }
 
 /* Card */
@@ -190,7 +201,6 @@ ul {
 }
 
 /* Section: Now Playing */
-
 section.now-playing {
     padding: 60px;
     background: url(../images/showcase-bg.jpg) no-repeat center center/cover;
