@@ -496,6 +496,7 @@ const init = () => {
         case "/movies.html":
             displayPopularMovies();
             displayMovieSlider();
+            break;
         case "/shows.html":
             displayPopularShows();
             displayShowSlider();
