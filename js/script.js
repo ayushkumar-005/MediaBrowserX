@@ -382,7 +382,7 @@ const displayShowDetails = async () => {
                 show.number_of_episodes
             }</li>
             <li><span class="text-secondary">Last Episode Air Date:</span> ${
-                show.last_episode_to_air.name
+                show.last_episode_to_air.air_date
             }</li>
             <li><span class="text-secondary">Status:</span> ${show.status}</li>
           </ul>
